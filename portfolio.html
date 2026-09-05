@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>คฑาวุธ เมืองพรหม — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #EEF1EF;
+      --bg-panel: #FFFFFF;
+      --ink: #12181A;
+      --ink-soft: #4A5457;
+      --line: #D7DCD8;
+      --accent: #2F6E52;
+      --accent-soft: #E4EEE7;
+      --term-bg: #12181A;
+      --term-text: #E8EEE9;
+      --radius-s: 4px;
+      --radius-m: 10px;
+      --maxw: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Thai', 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', 'IBM Plex Sans Thai', sans-serif;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    section {
+      padding: 88px 24px;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    /* focus visibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(238, 241, 239, 0.86);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+
+    .brand {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .brand .dot {
+      color: var(--accent);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .navlinks a:hover {
+      color: var(--ink);
+    }
+
+    .navtoggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: 6px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    @media (max-width:760px) {
+      .navlinks {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-panel);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 0;
+        display: none;
+      }
+
+      .navlinks.open {
+        display: flex;
+      }
+
+      .navlinks a {
+        padding: 12px 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .navtoggle {
+        display: block;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding-top: 72px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p.lead {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 46ch;
+      margin-bottom: 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-s);
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--ink);
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg-panel);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+    }
+
+    .download-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      color: var(--ink-soft);
+      background: var(--bg-panel);
+      font-size: 13px;
+      transition: border-color .15s ease, color .15s ease, background .15s ease;
+    }
+
+    .download-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* terminal panel */
+    .terminal {
+      background: var(--term-bg);
+      color: var(--term-text);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      box-shadow: 0 20px 50px -20px rgba(18, 24, 26, 0.45);
+      animation: rise .6s ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4A5457;
+    }
+
+    .term-path {
+      margin-left: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #8FA097;
+    }
+
+    .term-body {
+      padding: 22px 20px 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+    }
+
+    .profile-photo {
+      padding: 14px;
+      background: var(--term-bg);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 6px;
+      background: #25302C;
+    }
+
+    .term-line {
+      margin-bottom: 10px;
+    }
+
+    .term-prompt {
+      color: #7FBF9E;
+    }
+
+    .term-out {
+      color: #C7D1CB;
+    }
+
+    .term-tag {
+      color: #E3B368;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: #7FBF9E;
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @media (max-width:860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+    }
+
+    /* ---------- SECTION HEADS ---------- */
+    .section-head {
+      margin-bottom: 40px;
+      max-width: 60ch;
+    }
+
+    .section-head .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(24px, 3.4vw, 34px);
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      margin-top: 10px;
+      font-size: 15.5px;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .about p {
+      color: var(--ink-soft);
+      font-size: 16px;
+      max-width: 56ch;
+    }
+
+    .facts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .fact {
+      display: flex;
+      gap: 14px;
+      border-bottom: 1px dashed var(--line);
+      padding-bottom: 14px;
+    }
+
+    .fact dt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      width: 110px;
+      flex-shrink: 0;
+    }
+
+    .fact dd {
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    @media (max-width:760px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .skill-group h3 {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg-panel);
+      color: var(--ink-soft);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .chip img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+      flex: 0 0 17px;
+    }
+
+    @media (max-width:760px) {
+      .skill-groups {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- PROJECTS (carousel) ---------- */
+    .projects {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .proj-carousel {
+      position: relative;
+    }
+
+    .proj-slide {
+      display: none;
+    }
+
+    .proj-slide.active {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .proj-visual {
+      position: relative;
+    }
+
+    .browser-frame {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      box-shadow: 0 24px 55px -28px rgba(18, 24, 26, 0.4);
+    }
+
+    .browser-bar {
+      display: flex;
+      gap: 6px;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #F4F6F4;
+    }
+
+    .browser-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--line);
+    }
+
+    .mock-body {
+      padding: 20px;
+      min-height: 260px;
+      background: var(--bg-panel);
+    }
+
+    /* editable image slot */
+    .mock-image {
+      position: relative;
+      min-height: 280px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .mock-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mock-image .img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      padding: 24px;
+      margin: 10px;
+      border: 2px dashed var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .mock-image .img-placeholder .mono {
+      color: var(--ink);
+      font-size: 12.5px;
+    }
+
+    /* video embed slot */
+    .mock-video {
+      position: relative;
+      padding: 0;
+      aspect-ratio: 16/9;
+    }
+
+    .mock-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* chatbot mockup */
+    .mock-chat {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mock-bubble {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .mock-bubble.left {
+      align-self: flex-start;
+      background: var(--bg);
+      color: var(--ink-soft);
+      border-bottom-left-radius: 2px;
+    }
+
+    .mock-bubble.right {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 2px;
+    }
+
+    .mock-input {
+      margin-top: auto;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg);
+    }
+
+    /* map/dashboard mockup */
+    .mock-map {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .mock-map-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-map-row {
+      height: 16px;
+      border-radius: 4px;
+      background: var(--bg);
+    }
+
+    .mock-map-row.short {
+      width: 60%;
+    }
+
+    .mock-map-canvas {
+      position: relative;
+      border-radius: 8px;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px) 0 0/24px 24px,
+        linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/24px 24px,
+        var(--bg);
+      min-height: 220px;
+    }
+
+    .mock-pin {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--accent);
+      transform: rotate(-45deg);
+    }
+
+    /* e-commerce grid mockup */
+    .mock-shop-bar {
+      height: 14px;
+      width: 40%;
+      border-radius: 4px;
+      background: var(--bg);
+      margin-bottom: 16px;
+    }
+
+    .mock-shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mock-shop-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .mock-shop-thumb {
+      height: 46px;
+      border-radius: 5px;
+      background: var(--bg);
+      margin-bottom: 8px;
+    }
+
+    .mock-shop-line {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg);
+      margin-bottom: 5px;
+    }
+
+    .mock-shop-line.short {
+      width: 60%;
+    }
+
+    .proj-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: 0 8px 18px -10px rgba(18, 24, 26, 0.3);
+      z-index: 5;
+    }
+
+    .proj-arrow:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .proj-arrow.prev {
+      left: -19px;
+    }
+
+    .proj-arrow.next {
+      right: -19px;
+    }
+
+    .proj-info h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .proj-info p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0 0 20px;
+      max-width: 48ch;
+    }
+
+    .proj-tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .tag-pill {
+      background: var(--bg);
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .repo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--ink);
+      color: var(--bg-panel);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background .15s ease;
+    }
+
+    .repo-btn:hover {
+      background: var(--accent);
+    }
+
+    .repo-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .proj-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .proj-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--line);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: width .2s ease, background .2s ease;
+    }
+
+    .proj-dot.active {
+      background: var(--accent);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    @media (max-width:860px) {
+      .proj-slide.active {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .proj-arrow.prev {
+        left: 4px;
+      }
+
+      .proj-arrow.next {
+        right: 4px;
+      }
+    }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 34px;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+
+    .tl-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .tl-item h3 {
+      font-size: 16.5px;
+      margin-bottom: 4px;
+    }
+
+    .tl-item p {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      margin: 0;
+      max-width: 60ch;
+    }
+
+    /* ---------- CERTIFICATES (horizontal scroll) ---------- */
+    .certs {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cert-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 22px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink-soft) var(--line);
+    }
+
+    .cert-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .cert-scroll::-webkit-scrollbar-track {
+      background: var(--line);
+      border-radius: 999px;
+    }
+
+    .cert-scroll::-webkit-scrollbar-thumb {
+      background: var(--ink-soft);
+      border-radius: 999px;
+    }
+
+    .cert-card {
+      flex: 0 0 250px;
+      scroll-snap-align: start;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-m);
+      background: var(--bg-panel);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .15s ease, transform .15s ease;
+      padding: 0;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .cert-thumb {
+      aspect-ratio: 16/10;
+      position: relative;
+      padding: 16px;
+      background: linear-gradient(160deg, #F4F6F4, #E7ECE8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .cert-thumb .cert-org {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-soft);
+    }
+
+    .cert-thumb svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .cert-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      inset: 0;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .cert-skel {
+      width: 65%;
+      height: 5px;
+      background: var(--line);
+      border-radius: 3px;
+    }
+
+    .cert-skel.short {
+      width: 42%;
+    }
+
+    .cert-info {
+      padding: 16px 18px 20px;
+    }
+
+    .cert-info .cert-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .cert-info h3 {
+      font-size: 14.5px;
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+
+    .cert-info p {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* modal */
+    .cert-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 24, 26, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 100;
+    }
+
+    .cert-modal[hidden] {
+      display: none;
+    }
+
+    .cert-modal-inner {
+      background: var(--bg-panel);
+      border-radius: var(--radius-m);
+      max-width: 420px;
+      width: 100%;
+      padding: 22px;
+      position: relative;
+    }
+
+    .cert-modal-thumb {
+      aspect-ratio: 16/10;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      background: linear-gradient(160deg, #F4F6F4, #E7ECE8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cert-modal-thumb svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .cert-modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .cert-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--bg-panel);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .cert-modal-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    #certModalTitle {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    #certModalMeta {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .contact .kicker {
+      color: #7FBF9E;
+    }
+
+    .contact h2 {
+      color: var(--bg);
+    }
+
+    .contact .section-head p {
+      color: #B7C1BC;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .contact-links a {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-s);
+      padding: 12px 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .contact-links a:hover {
+      border-color: #7FBF9E;
+      background: rgba(127, 191, 158, 0.08);
+    }
+
+    .contact-links svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      fill: currentColor;
+    }
+
+    .copy-status {
+      width: 100%;
+      margin: -4px 0 0;
+      color: #7FBF9E;
+      font-size: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      background: var(--ink);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="brand">คฑาวุธ เมืองพรหม<span class="dot">.</span></div>
+      <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">เมนู</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#about">เกี่ยวกับ</a>
+        <a href="#skills">ทักษะ</a>
+        <a href="#projects">ผลงาน</a>
+        <a href="#timeline">การศึกษา</a>
+        <a href="#certificates">ใบรับรอง</a>
+        <a href="#contact">ติดต่อ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div>
+        <div class="hero-eyebrow">นักศึกษาฝึกงาน · สาย Software Development</div>
+        <h1>สวัสดีครับ ผม<br>คฑาวุธ เมืองพรหม</h1>
+        <p class="lead">
+          นักศึกษาสาขาวิทยาการคอมพิวเตอร์และนวัตกรรมการพัฒนาซอฟต์แวร์ มหาวิทยาลัยศรีปทุม
+          สนใจด้าน Software Development และ Web Application Development มีประสบการณ์พัฒนาโปรเจกต์ทั้ง
+          Front-end และ Back-end ด้วย React, Node.js, ASP.NET MVC และ MySQL
+          พร้อมนำความรู้จากการเรียนไปประยุกต์ใช้ในการฝึกงานจริง
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">ดูผลงาน</a>
+        </div>
+        <div class="download-links" aria-label="ดาวน์โหลดเอกสารสมัครงาน">
+          <a class="download-btn" href="files/Resume.pdf" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3a1 1 0 0 1 1 1v9.6l2.8-2.8a1 1 0 1 1 1.4 1.4l-4.5 4.5a1 1 0 0 1-1.4 0l-4.5-4.5a1 1 0 1 1 1.4-1.4l2.8 2.8V4a1 1 0 0 1 1-1ZM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z" />
+            </svg>
+            ดาวน์โหลด Resume
+          </a>
+          <a class="download-btn" href="files/CV.pdf" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3a1 1 0 0 1 1 1v9.6l2.8-2.8a1 1 0 1 1 1.4 1.4l-4.5 4.5a1 1 0 0 1-1.4 0l-4.5-4.5a1 1 0 1 1 1.4-1.4l2.8 2.8V4a1 1 0 0 1 1-1ZM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 0 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z" />
+            </svg>
+            ดาวน์โหลด CV
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal" role="img" aria-label="รูปโปรไฟล์ของคฑาวุธ เมืองพรหม">
+        <div class="term-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-path">~/portfolio/profile.png</span>
+        </div>
+        <div class="profile-photo">
+          <img src="images/profile.gif" alt="รูปโปรไฟล์ของคฑาวุธ เมืองพรหม">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">เกี่ยวกับผม</div>
+          <h2>รู้จักผมสักนิดก่อนเริ่มงาน</h2>
+        </div>
+        <div class="about-grid">
+          <p>
+            ผมเป็นนักศึกษาสาขาวิทยาการคอมพิวเตอร์ที่มีความสนใจด้าน Software Development และ Web Application Development
+            ชื่นชอบการเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ โดยเฉพาะการพัฒนาเว็บไซต์และการเขียนโปรแกรม
+            มีประสบการณ์พัฒนาโปรเจกต์ทั้ง Front-end และ Back-end
+
+            เป็นคนที่ชอบเรียนรู้สิ่งใหม่ ๆ สนใจการแก้ไขปัญหา และพยายามพัฒนาทักษะของตัวเองอยู่เสมอ
+            นอกจากการเรียนในห้องเรียนแล้ว ยังนำความรู้มาลองพัฒนาโปรเจกต์จริงเพื่อเพิ่มประสบการณ์และความเข้าใจในการทำงาน
+            มุ่งหวังที่จะนำความรู้และทักษะที่มีไปต่อยอดในการฝึกงาน พร้อมเรียนรู้การทำงานจริงและพัฒนาตัวเองในสายงานด้าน
+            Software Development
+
+          </p>
+          <dl class="facts">
+            <div class="fact">
+              <dt>การศึกษา</dt>
+              <dd>มหาวิทยาลัยศรีปทุม · วิทยาการคอมพิวเตอร์และนวัตกรรมการพัฒนาซอฟต์แวร์ · 2566–2569</dd>
+            </div>
+            <div class="fact">
+              <dt>เกรดเฉลี่ย</dt>
+              <dd>3.74 / 4.00</dd>
+            </div>
+            <div class="fact">
+              <dt>สนใจสาย</dt>
+              <dd>Software Development / Web Application Development</dd>
+            </div>
+            <div class="fact">
+              <dt>ภาษา</dt>
+              <dd>ภาษาไทย — เชี่ยวชาญ · ภาษาอังกฤษ — พื้นฐาน</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">ทักษะ</div>
+          <h2>เครื่องมือที่ใช้งานได้</h2>
+          <p>ทักษะจากการเรียนและโปรเจกต์ส่วนตัว เรียงตามความถนัด ไม่ใช่ตามความเชี่ยวชาญระดับมืออาชีพ</p>
+        </div>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>ภาษาโปรแกรม</h3>
+            <div class="chip-row">
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="">C#</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="">JavaScript</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                  alt="">Python</span>
+              <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  alt="">SQL</span>
+              <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                  alt="">HTML / CSS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>เฟรมเวิร์ก / ฐานข้อมูล</h3>
+            <div class="chip-row">
+              <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                  alt="">React</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                  alt="">Node.js</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                  alt="">Express.js</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+                  alt="">ASP.NET MVC</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                  alt="">Bootstrap</span>
+              <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  alt="">MySQL</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                  alt="">MongoDB</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>เครื่องมือ / เทคโนโลยี</h3>
+            <div class="chip-row">
+              <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                  alt="">Git / GitHub</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="">REST
+                API</span>
+              <span class="chip"><img src="https://cdn.simpleicons.org/jsonwebtokens/12181A" alt="">JWT</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"
+                  alt="">Socket.IO</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                  alt="">Docker</span>
+              <span class="chip"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                  alt="">Google Colab</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">ผลงาน</div>
+          <h2>โปรเจกต์ที่ลงมือทำจริง</h2>
+          <p>เลื่อนดูแต่ละโปรเจกต์ พร้อมลิงก์ repo</p>
+        </div>
+
+        <div class="proj-carousel">
+
+          <div class="proj-slide" data-index="1" hidden>
+            <div class="proj-visual">
+              <button class="proj-arrow prev" aria-label="โปรเจกต์ก่อนหน้า">‹</button>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                </div>
+                <div class="mock-body mock-video">
+                  <iframe src="https://www.youtube.com/embed/_qUhW5lGIKM" title="แนะนำการใช้งาน llm"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <button class="proj-arrow next" aria-label="โปรเจกต์ถัดไป">›</button>
+            </div>
+            <div class="proj-info">
+              <h3>Gold Knowledge Chatbot System</h3>
+              <p>ระบบ Chatbot ให้ความรู้เกี่ยวกับราคาทองคำและตัวชี้วัดทางการเงิน โดยใช้แนวคิด
+                Retrieval-Augmented Generation (RAG) เพื่อค้นหาและนำข้อมูลที่เกี่ยวข้องมาใช้ตอบคำถาม</p>
+              <div class="proj-tags-grid">
+                <span class="tag-pill">Python</span>
+                <span class="tag-pill">LangChain</span>
+                <span class="tag-pill">RAG</span>
+                <span class="tag-pill">Hugging Face</span>
+                <span class="tag-pill">FAISS</span>
+                <span class="tag-pill">MongoDB</span>
+                <span class="tag-pill">FastAPI</span>
+              </div>
+              <!-- แก้ href ด้านล่างเป็นลิงก์ repo จริงของโปรเจกต์นี้ -->
+              <a class="repo-btn" href="https://github.com/Mos0991451726/Project3-2" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                ดู Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="proj-slide active" data-index="0">
+            <div class="proj-visual">
+              <button class="proj-arrow prev" aria-label="โปรเจกต์ก่อนหน้า">‹</button>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                </div>
+                <div class="mock-body mock-video">
+                  <iframe width="1196" height="829" src="https://www.youtube.com/embed/mT5mq6gF6cU" title="แนะนำบอท n8n"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <button class="proj-arrow next" aria-label="โปรเจกต์ถัดไป">›</button>
+            </div>
+            <div class="proj-info">
+              <h3>LINE Chatbot — Gold Knowledge Chatbot</h3>
+              <p>พัฒนา Chatbot สำหรับให้บริการผ่าน LINE ผู้ใช้สามารถส่งคำถามหรือขอข้อมูลผ่าน LINE
+                แล้วระบบจะนำข้อความไปประมวลผลและส่งคำตอบกลับมา
+                รวมถึงสามารถเชื่อมต่อข้อมูลจากบริการภายนอกเพื่อใช้ประกอบการตอบคำถาม</p>
+              <div class="proj-tags-grid">
+                <span class="tag-pill">n8n</span>
+                <span class="tag-pill">LINE Messaging API</span>
+                <span class="tag-pill">Webhook</span>
+                <span class="tag-pill">LLM</span>
+                <span class="tag-pill">External API</span>
+                <span class="tag-pill">LINE Flex Message</span>
+              </div>
+              <!-- แก้ href ด้านล่างเป็นลิงก์ repo จริงของโปรเจกต์นี้ -->
+              <a class="repo-btn" href="https://github.com/Katawutxz/Gold-Knowledge-Chatbot-System" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                ดู Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="proj-slide" data-index="2" hidden>
+            <div class="proj-visual">
+              <button class="proj-arrow prev" aria-label="โปรเจกต์ก่อนหน้า">‹</button>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                </div>
+                <div class="mock-body mock-video">
+                  <iframe width="1337" height="752" src="https://www.youtube.com/embed/HyhFn0Yh9s4"
+                    title="แนะนำการใช้ slide me V2" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <button class="proj-arrow next" aria-label="โปรเจกต์ถัดไป">›</button>
+            </div>
+            <div class="proj-info">
+              <h3>SlideMe</h3>
+              <p>เว็บไซต์สำหรับเรียกรถลากผ่านแผนที่ ให้ผู้ใช้ระบุตำแหน่งและเรียกรถลากได้แบบเรียลไทม์
+                พร้อมระบบสื่อสารระหว่างผู้ใช้งานและผู้ให้บริการ</p>
+              <div class="proj-tags-grid">
+                <span class="tag-pill">React</span>
+                <span class="tag-pill">Node.js</span>
+                <span class="tag-pill">Express.js</span>
+                <span class="tag-pill">MySQL</span>
+                <span class="tag-pill">Socket.IO</span>
+                <span class="tag-pill">Map API</span>
+              </div>
+              <!-- แก้ href ด้านล่างเป็นลิงก์ repo จริงของโปรเจกต์นี้ -->
+              <a class="repo-btn" href="https://github.com/thanapat-hnu/newslideme" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                ดู Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="proj-slide" data-index="3" hidden>
+            <div class="proj-visual">
+              <button class="proj-arrow prev" aria-label="โปรเจกต์ก่อนหน้า">‹</button>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                </div>
+                <div class="mock-body mock-image">
+                  <img src="images/petshop.png" alt="ภาพหน้าจอ Pet Food E-Commerce Website"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div class="img-placeholder" style="display:none;">
+                    <span class="mono">images/project-3-petshop.png</span>
+                    <p>วางไฟล์รูปชื่อนี้ในโฟลเดอร์ "images" ข้างไฟล์ html<br>หรือแก้ src ด้านบนเป็น path รูปของคุณ</p>
+                  </div>
+                </div>
+              </div>
+              <button class="proj-arrow next" aria-label="โปรเจกต์ถัดไป">›</button>
+            </div>
+            <div class="proj-info">
+              <h3>Pet Food E-Commerce Website</h3>
+              <p>เว็บไซต์ E-Commerce สำหรับจำหน่ายอาหารสัตว์ พร้อมระบบจัดการสินค้าและข้อมูลผู้ใช้งาน
+                สำหรับผู้ดูแลระบบ</p>
+              <div class="proj-tags-grid">
+                <span class="tag-pill">ASP.NET MVC</span>
+                <span class="tag-pill">C#</span>
+                <span class="tag-pill">MySQL</span>
+                <span class="tag-pill">Entity Framework Core</span>
+                <span class="tag-pill">Bootstrap</span>
+              </div>
+              <!-- แก้ href ด้านล่างเป็นลิงก์ repo จริงของโปรเจกต์นี้ -->
+              <a class="repo-btn" href="https://github.com/Katawutxz/pet-food-shop" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                ดู Repository
+              </a>
+            </div>
+          </div>
+
+
+          <div class="proj-slide" data-index="4" hidden>
+            <div class="proj-visual">
+              <button class="proj-arrow prev" aria-label="โปรเจกต์ก่อนหน้า">‹</button>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                </div>
+                <div class="mock-body mock-image">
+                  <img src="images/E-commerce.png" alt="ภาพหน้าจอ E-Commerce Website"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div class="img-placeholder" style="display:none;">
+                    <span class="mono">images/project-3-petshop.png</span>
+                    <p>วางไฟล์รูปชื่อนี้ในโฟลเดอร์ "images" ข้างไฟล์ html<br>หรือแก้ src ด้านบนเป็น path รูปของคุณ</p>
+                  </div>
+                </div>
+              </div>
+              <button class="proj-arrow next" aria-label="โปรเจกต์ถัดไป">›</button>
+            </div>
+            <div class="proj-info">
+              <h3>E-commerce — เว็บซื้อขายอุปกรณ์คอมพิวเตอร์</h3>
+              <p>พัฒนาเว็บไซต์สำหรับซื้อขายอุปกรณ์คอมพิวเตอร์ออนไลน์ โดยผู้ใช้สามารถเลือกดูสินค้า
+                จัดการข้อมูลที่เกี่ยวข้องกับการซื้อขาย และใช้งานผ่านระบบสมาชิก
+                ส่วนฝั่งผู้ดูแลสามารถจัดการข้อมูลภายในระบบได้</p>
+              <div class="proj-tags-grid">
+                <span class="tag-pill">React</span>
+                <span class="tag-pill">Vite</span>
+                <span class="tag-pill">Node.js</span>
+                <span class="tag-pill">Express</span>
+                <span class="tag-pill">MySQL</span>
+                <span class="tag-pill">Sequelize</span>
+                <span class="tag-pill">JWT</span>
+                <span class="tag-pill">bcrypt</span>
+                <span class="tag-pill">Swagger</span>
+              </div>
+              <!-- แก้ href ด้านล่างเป็นลิงก์ repo จริงของโปรเจกต์นี้ -->
+              <a class="repo-btn" href="https://github.com/thanapat-hnu/Project_CSI400" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                ดู Repository
+              </a>
+            </div>
+          </div>
+
+
+          <div class="proj-dots">
+            <button class="proj-dot active" data-slide="0" aria-label="โปรเจกต์ 1"></button>
+            <button class="proj-dot" data-slide="1" aria-label="โปรเจกต์ 2"></button>
+            <button class="proj-dot" data-slide="2" aria-label="โปรเจกต์ 3"></button>
+            <button class="proj-dot" data-slide="3" aria-label="โปรเจกต์ 4"></button>
+            <button class="proj-dot" data-slide="4" aria-label="โปรเจกต์ 5"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">ประวัติการศึกษา</div>
+          <h2>เรียนอะไรมาบ้าง</h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">2566 – 2569</div>
+            <h3>วิทยาการคอมพิวเตอร์และนวัตกรรมการพัฒนาซอฟต์แวร์ · มหาวิทยาลัยศรีปทุม</h3>
+            <p>คณะเทคโนโลยีสารสนเทศ เกรดเฉลี่ยสะสม 3.74 / 4.00</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">2563 – 2565</div>
+            <h3>ระดับมัธยมศึกษาตอนปลาย · โรงเรียนพนมเบญจา</h3>
+            <p>ศิลป์-คำนวณ เกรดเฉลี่ยสะสม 3.76 / 4.00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="certs" id="certificates">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">ใบรับรอง</div>
+          <h2>ใบรับรองและเกียรติบัตร</h2>
+          <p>เก็บใบเซอร์หรือประกาศนียบัตรที่เคยได้ไว้ตรงนี้ เลื่อนดูได้ทางขวา คลิกที่รูปเพื่อดูขนาดใหญ่</p>
+        </div>
+        <div class="cert-scroll" id="certScroll">
+          <button class="cert-card" data-title="SPU AI Prompt Mini Hackathon 2024" data-org="มหาวิทยาลัยศรีปทุม"
+            data-year="2567" data-image="images/certificate-1.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-1.png" alt="SPU AI Prompt Mini Hackathon 2024">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2567</div>
+              <h3>SPU AI Prompt Mini Hackathon 2024</h3>
+              <p>มหาวิทยาลัยศรีปทุม</p>
+            </div>
+          </button>
+          <button class="cert-card" data-title="Certificate of Completion: Insights from Data and AI"
+            data-org="หลักสูตรออนไลน์" data-year="2569" data-image="images/certificate-2.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-2.png" alt="Insights from Data and AI">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2569</div>
+              <h3>Insights from Data and AI</h3>
+              <p>หลักสูตรความเข้าใจและค้นหาข้อมูลเชิงลึกจาก AI</p>
+            </div>
+          </button>
+          <button class="cert-card" data-title="เครื่องมือ Cloud-Based ศตวรรษ 21 เพื่อชีวิตประจำวัน"
+            data-org="หลักสูตรออนไลน์ · 10 ชั่วโมง" data-year="2567" data-image="images/certificate-3.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-3.png" alt="เครื่องมือ Cloud-Based ศตวรรษ 21 เพื่อชีวิตประจำวัน">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2567</div>
+              <h3>เครื่องมือ Cloud-Based ศตวรรษ 21</h3>
+              <p>ผ่านการอบรมหลักสูตรออนไลน์ 10 ชั่วโมงการเรียนรู้</p>
+            </div>
+          </button>
+          <button class="cert-card"
+            data-title="สร้างแอปพลิเคชันสแตกเต็มรูปแบบโดยใช้ React และ API น้อยที่สุดสําหรับ ASP.NET Core"
+            data-org="Microsoft · 2568" data-year="2568" data-image="images/certificate-4.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-4.png"
+                alt="สร้างแอปพลิเคชันสแตกเต็มรูปแบบโดยใช้ React และ API น้อยที่สุดสําหรับ ASP.NET Core">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2568</div>
+              <h3>สร้างแอปพลิเคชันสแตกเต็มรูปแบบโดยใช้ React และ API น้อยที่สุดสําหรับ ASP.NET Core</h3>
+              <p>Microsoft · 2568</p>
+            </div>
+          </button>
+          <button class="cert-card" data-title="การใช้ GitHub Copilot ด้วย JavaScript" data-org="Microsoft · 2568"
+            data-year="2568" data-image="images/certificate-5.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-5.png" alt="การใช้ GitHub Copilot ด้วย JavaScript">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2568</div>
+              <h3>การใช้ GitHub Copilot ด้วย JavaScript</h3>
+              <p>Microsoft · 2568</p>
+            </div>
+          </button>
+          <button class="cert-card"
+            data-title="เผยแพร่แอป Angular, React, Svelte หรือ Vue JavaScript ด้วย Azure Static Web Apps"
+            data-org="Microsoft · 2568" data-year="2568" data-image="images/certificate-6.png">
+            <div class="cert-thumb">
+              <img src="images/certificate-6.png"
+                alt="เผยแพร่แอป Angular, React, Svelte หรือ Vue JavaScript ด้วย Azure Static Web Apps">
+            </div>
+            <div class="cert-info">
+              <div class="cert-year">2568</div>
+              <h3>เผยแพร่แอป Angular, React, Svelte หรือ Vue JavaScript ด้วย Azure Static Web Apps</h3>
+              <p>Microsoft · 2568</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERT MODAL -->
+    <div class="cert-modal" id="certModal" hidden>
+      <div class="cert-modal-inner">
+        <button class="cert-modal-close" id="certModalClose" aria-label="ปิด">✕</button>
+        <div class="cert-modal-thumb">
+          <img id="certModalImage" src="" alt="">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="24" r="18" stroke="var(--accent)" stroke-width="2.5" />
+            <circle cx="32" cy="24" r="11" stroke="var(--accent)" stroke-width="1.5" opacity="0.55" />
+            <path d="M20 39 L16 60 L32 52 L48 60 L44 39" stroke="var(--accent)" stroke-width="2.5"
+              stroke-linejoin="round" fill="none" />
+          </svg>
+        </div>
+        <h3 id="certModalTitle"></h3>
+        <p id="certModalMeta"></p>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">ติดต่อ</div>
+          <h2>สนใจร่วมงานกัน ทักมาได้เลย</h2>
+          <p>เปิดรับโอกาสฝึกงานและโปรเจกต์ที่ได้เรียนรู้สิ่งใหม่ ยินดีคุยรายละเอียดเพิ่มเติม</p>
+        </div>
+        <div class="contact-links">
+          <a href="#" class="copy-email" data-email="mos81140@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Zm2.5-.5a.5.5 0 0 0-.3.1L12 10.2l6.8-5.1a.5.5 0 0 0-.3-.1h-13ZM19 7.6l-6.4 4.8a1 1 0 0 1-1.2 0L5 7.6v10.9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5V7.6Z" />
+            </svg>
+            mos81140@gmail.com
+          </a>
+          <a href="#" class="copy-phone" data-phone="063-586-0964">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6.6 2.5h3.1c.5 0 .9.3 1 .8l.8 3.5c.1.4-.1.8-.4 1l-2 1.5a14.8 14.8 0 0 0 5.6 5.6l1.5-2c.2-.3.6-.5 1-.4l3.5.8c.5.1.8.5.8 1v3.1c0 .6-.4 1.1-1 1.2-1 .2-2 .3-3 .3C9.9 18.9 5.1 14.1 5.1 8c0-1 .1-2 .3-3 .1-.6.6-1 1.2-1Z" />
+            </svg>
+            063-586-0964
+          </a>
+          <a href="https://github.com/Katawutxz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" />
+            </svg>
+            github.com/Katawutxz
+          </a>
+          <a href="https://www.linkedin.com/in/katawut-muangprom-51a762433" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.2 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.4 9h3.6v11.5H3.4V9Zm5.8 0h3.4v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6v6.2H17v-5.5c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9v5.6H9.2V9Z" />
+            </svg>
+            linkedin.com/in/katawut-muangprom
+          </a>
+          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2569 คฑาวุธ เมืองพรหม
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const copyEmail = document.querySelector('.copy-email');
+    const copyPhone = document.querySelector('.copy-phone');
+    const copyStatus = document.getElementById('copyStatus');
+    async function copyContactValue(value, event) {
+      event.preventDefault();
+      await navigator.clipboard.writeText(value);
+      copyStatus.textContent = 'คัดลอกข้อมูลแล้ว';
+      setTimeout(() => { copyStatus.textContent = ''; }, 2000);
+    }
+    copyEmail.addEventListener('click', (event) => copyContactValue(copyEmail.dataset.email, event));
+    copyPhone.addEventListener('click', (event) => copyContactValue(copyPhone.dataset.phone, event));
+
+    // ---- project carousel ----
+    const slides = document.querySelectorAll('.proj-slide');
+    const dots = document.querySelectorAll('.proj-dot');
+    let current = 0;
+
+    function showSlide(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach((s, idx) => {
+        const active = idx === current;
+        s.classList.toggle('active', active);
+        s.hidden = !active;
+      });
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+    }
+
+    document.querySelectorAll('.proj-arrow.prev').forEach(btn =>
+      btn.addEventListener('click', () => showSlide(current - 1))
+    );
+    document.querySelectorAll('.proj-arrow.next').forEach(btn =>
+      btn.addEventListener('click', () => showSlide(current + 1))
+    );
+    dots.forEach((d, idx) => d.addEventListener('click', () => showSlide(idx)));
+    showSlide(current);
+
+    // ---- certificate modal ----
+    const certModal = document.getElementById('certModal');
+    const certModalTitle = document.getElementById('certModalTitle');
+    const certModalMeta = document.getElementById('certModalMeta');
+    const certModalImage = document.getElementById('certModalImage');
+    const certModalClose = document.getElementById('certModalClose');
+
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.addEventListener('click', () => {
+        certModalTitle.textContent = card.dataset.title;
+        certModalMeta.textContent = `${card.dataset.org} · ${card.dataset.year}`;
+        certModalImage.src = card.dataset.image;
+        certModalImage.alt = card.dataset.title;
+        certModal.hidden = false;
+      });
+    });
+    function closeCertModal() { certModal.hidden = true; }
+    certModalClose.addEventListener('click', closeCertModal);
+    certModal.addEventListener('click', (e) => { if (e.target === certModal) closeCertModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCertModal(); });
+  </script>
+
+</body>
+
+</html>
